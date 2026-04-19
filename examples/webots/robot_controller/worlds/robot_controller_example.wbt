@@ -1,0 +1,32 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/universal_robots/protos/UR3e.proto"
+EXTERNPROTO "../protos/Robotiq2f85Gripper.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.1977637742614824 -0.05266653065785168 0.9788338603350002 3.8882311835386116
+  position 4.161509319447333 3.791731580066345 2.7955918230559433
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+UR3e {
+  translation 0 0 0.74
+  controller "ur3e_controller"
+  toolSlot [
+    Robotiq2f85Gripper {
+      rotation 1 0 0 -1.5707953071795862
+    }
+  ]
+}
+Table {
+}

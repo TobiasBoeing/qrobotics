@@ -1,0 +1,72 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "qrobotics"
+version = "0.1.0"
+description = "A Python package for robotics applications."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+dependencies = [
+    "roboticstoolbox-python>=1.0",
+    "numpy<=1.23",
+    "spatialmath-python>=1.1.15",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.3.1",
+    "hatch>=1.16.5",
+    "mypy>=1.20.1",
+    "pre-commit>=4.5.1",
+    "pyright>=1.1.408",
+    "ruff>=0.15.11",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qrobotics"]
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 120
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "C90"]
+ignore = ["E203", "E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["qrobotics"]
+
+[tool.pyright]
+include = ["src"]
+venvPath = "."
+venv = ".venv"
+typeCheckingMode = "basic"
+pythonVersion = "3.10"
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
+warn_return_any = true
+warn_redundant_casts = true
+warn_unused_configs = true
+strict_equality = true
+explicit_package_bases = true
+namespace_packages = true
+mypy_path = "src"
+
+[[tool.mypy.overrides]]
+ignore_errors = true
+module = ["numpy.*", "roboticstoolbox.*", "controller.*", "spatialmath.*"]
+ignore_missing_imports = true
